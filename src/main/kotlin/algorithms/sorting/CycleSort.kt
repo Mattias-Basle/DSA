@@ -5,10 +5,12 @@ package algorithms.sorting
 class CycleSort {
 
     fun sort(array: Array<Int>): Array<Int> {
-        for (index in  0 until array.size) {
-            while (array[index] != (index + 1)) { // keep swaping values, until the index number and value matches
-                swap(array, array[index] -1, index)
-            }
+        var index = 0
+        while (index < array.size) {
+            val correctIndex = array[index] - 1
+            if (array[index] != array[correctIndex]) {
+                swap(array, index, correctIndex)
+            } else index++
         }
         return array
     }
