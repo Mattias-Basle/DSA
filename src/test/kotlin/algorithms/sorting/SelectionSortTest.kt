@@ -9,8 +9,8 @@ class SelectionSortTest {
 
     @Test
     fun `should sort array successfully`() {
-        val array = arrayOf(4, 5, 1, 2, 3)
-        val expected = arrayOf(1, 2, 3, 4, 5)
+        val array = arrayOf(51, 14, 25, 19, 2, 6, 35, 96)
+        val expected = arrayOf(2, 6, 14, 19, 25, 35, 51, 96)
         val sorted = selectionSort.sort(array)
 
         assertArrayEquals(expected, sorted)
