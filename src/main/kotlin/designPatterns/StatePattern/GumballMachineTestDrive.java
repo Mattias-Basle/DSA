@@ -1,8 +1,11 @@
 package designPatterns.StatePattern;
 
+import java.rmi.RemoteException;
+
 public class GumballMachineTestDrive {
-    public static void main(String[] args) {
-        GumballMachine gumballMachine = new GumballMachine(5);
+    public static void main(String[] args) throws RemoteException {
+
+        GumballMachine gumballMachine = new GumballMachine( 5, "SP");
 
         System.out.println(gumballMachine);
 

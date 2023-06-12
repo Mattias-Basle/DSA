@@ -1,6 +1,12 @@
 package designPatterns.StatePattern;
 
-public class GumballMachine {
+import designPatterns.ProxyPattern.remoteProxy.GumballMachineRemote;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class GumballMachine extends UnicastRemoteObject implements GumballMachineRemote {
+    private static final long serialVersionUID = 2L;
     State soldOutState;
     State noQuarterState;
     State hasQuarterState;
@@ -9,13 +15,16 @@ public class GumballMachine {
 
     State state;
     int count = 0;
+    String location;
 
-    public GumballMachine(int count) {
+    public GumballMachine(int count, String location) throws RemoteException {
         soldOutState = new SoldOutState(this);
         noQuarterState = new NoQuaterState(this);
         hasQuarterState = new HasQuarterState(this);
         soldState = new SoldState(this);
         winnerState = new WinnerState(this);
+
+        this.location = location;
 
         this.count = count;
         if (count > 0) {
@@ -40,6 +49,10 @@ public class GumballMachine {
 
     void setState(State state) {
         this.state = state;
+    }
+
+    public State getState() {
+        return state;
     }
 
     public State getSoldState() {
@@ -81,10 +94,15 @@ public class GumballMachine {
         return count;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("\nMighty Gumball, Inc.\n");
         builder.append("Java-enabled Standing Gumball Model #2004\n");
+        builder.append("Location area: " + getLocation() + "\n");
         builder.append("Inventory: " + count + " gumballs\n");
 
         if (noQuarterState.equals(state)) {

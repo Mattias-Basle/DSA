@@ -3,8 +3,9 @@ package designPatterns.StatePattern;
 import java.util.Random;
 
 public class HasQuarterState implements State {
+    private static final long serialVersionUID = 2L;
     Random randomWinner = new Random(System.currentTimeMillis());
-    GumballMachine gumballMachine;
+    transient GumballMachine gumballMachine;
 
     public HasQuarterState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
