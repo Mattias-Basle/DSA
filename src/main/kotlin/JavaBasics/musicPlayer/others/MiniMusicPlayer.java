@@ -1,4 +1,4 @@
-package JavaBasics.musicPlayer;
+package JavaBasics.musicPlayer.others;
 
 import javax.sound.midi.*;
 import javax.swing.*;
