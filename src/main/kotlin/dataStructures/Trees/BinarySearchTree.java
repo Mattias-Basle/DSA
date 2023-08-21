@@ -86,6 +86,53 @@ public class BinarySearchTree {
         display(node.right, "Right child of " + node.getValue() + " : ");
     }
 
+    public void preOrderTraversal() {
+        preOrderTraversal(this.root);
+        System.out.println();
+    }
+
+    private void preOrderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        System.out.print(node.getValue() + ", ");
+
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
+    }
+
+    public void postOrderTraversal() {
+        postOrderTraversal(this.root);
+        System.out.println();
+    }
+
+    private void postOrderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
+        System.out.print(node.getValue() + ", ");
+    }
+
+    public void inOrderTraversal() {
+        inOrderTraversal(this.root);
+        System.out.println();
+    }
+
+    private void inOrderTraversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrderTraversal(node.left);
+        System.out.print(node.getValue() + ", ");
+        inOrderTraversal(node.right);
+    }
+
+
+
+
     public void populate(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             this.insert(nums[i]);
