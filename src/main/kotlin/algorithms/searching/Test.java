@@ -1,4 +1,6 @@
-package algorithms.hashing;
+package algorithms.searching;
+
+import algorithms.searching.KarpRabin;
 
 public class Test {
 

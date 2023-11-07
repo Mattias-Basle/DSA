@@ -1,4 +1,4 @@
-package algorithms.hashing;
+package algorithms.searching;
 
 public class KarpRabin {
     private final int PRIME = 101;
