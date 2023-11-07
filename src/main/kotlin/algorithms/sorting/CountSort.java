@@ -1,6 +1,7 @@
 package algorithms.sorting;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class CountSort {
@@ -9,7 +10,7 @@ public class CountSort {
 
     public static void main(String[] args) {
         int[] arr = {3, 4, 1, 3, 2, 5, 2, 8};
-        sort(arr);
+        sortHash(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -44,6 +45,43 @@ public class CountSort {
                 arr[index] = i;
                 newArray[i] = newArray[i] -1;
                 index++;
+            }
+        }
+    }
+
+    private static void sortHash(int[] arr) {
+        // find largest number in array
+        int max = 0;
+        for (int num: arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+
+        //create hashmap to store values-frequencies
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        //count frequencies of values within the original one and complete the map
+        for (int i = 0; i <= max; i++) {
+            int count = 0;
+            for (int num: arr) {
+                if (num == i) {
+                    count++;
+                }
+            }
+            map.put(i, count);
+        }
+
+        // replace values of old array using frequencies from map
+        int index = 0;
+
+        for (int i = 0; i <= max; i++) {
+            if (map.get(i) != 0) {
+                while(map.get(i) != 0) {
+                    arr[index] = i;
+                    map.put(i, map.get(i)-1);
+                    index++;
+                }
             }
         }
     }
